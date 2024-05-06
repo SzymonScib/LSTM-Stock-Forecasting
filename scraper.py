@@ -3,9 +3,9 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import webbrowser
 
-
+//Write your USER-AGENT header into this dictionary
 header = {
-    "User-Agent" : "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+    'User-Agent' : 'Your user-agent'
 }
 
 def scrape_data(header):
@@ -63,8 +63,6 @@ def scrape_historical_data(header, symbol):
     print(a)
     webbrowser.open(a)
 
-scrape_historical_data(header, 'MSFT')    
+ 
     
     
-
-
