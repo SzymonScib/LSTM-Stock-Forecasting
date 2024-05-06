@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
+import webbrowser
 
 
 header = {
@@ -57,6 +58,12 @@ def scrape_historical_data(header, symbol):
     url = 'https://finance.yahoo.com/quote/'+ symbol + '/history'
     r = requests.get(url, headers=header)
     soup = BeautifulSoup(r.text, 'html.parser')
+
+    a = soup.find('a', attrs={'data-testid':'download-link'}).get('href')
+    print(a)
+    webbrowser.open(a)
+
+scrape_historical_data(header, 'MSFT')    
     
     
 
