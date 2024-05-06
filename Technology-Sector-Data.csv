@@ -1,0 +1,51 @@
+,Symbol,Name,Price,Change,%_Change,Volume,Market_Cap,PE_Ratio
+0,MSFT,Microsoft Corporation,397.75,+2.81,+0.71%,8.952M,2.956T,34.50
+1,NVDA,NVIDIA Corporation,853.35,+22.94,+2.76%,28.28M,2.133T,71.35
+2,ORCL,Oracle Corporation,115.01,+0.38,+0.33%,2.932M,316.103B,30.35
+3,AMD,"Advanced Micro Devices, Inc.",145.77,+1.50,+1.04%,39.457M,235.584B,211.26
+4,QCOM,QUALCOMM Incorporated,179.98,+15.87,+9.67%,19.86M,200.854B,25.67
+5,ACN,Accenture plc,299.87,+1.21,+0.41%,1.648M,188.537B,27.21
+6,AMAT,"Applied Materials, Inc.",197.49,+3.50,+1.81%,1.484M,164.098B,23.26
+7,IBM,International Business Machines Corporation,164.10,-0.33,-0.20%,2.209M,150.738B,18.63
+8,NOW,"ServiceNow, Inc.",692.60,+6.99,+1.02%,"577,200",142.249B,73.76
+9,MU,"Micron Technology, Inc.",111.96,+2.26,+2.06%,8.924M,123.981B,N/A
+10,ADI,"Analog Devices, Inc.",195.94,+2.05,+1.06%,1.155M,97.168B,34.99
+11,SHOP,Shopify Inc.,72.24,+1.84,+2.62%,3.896M,93.08B,722.44
+12,DELL,Dell Technologies Inc.,123.11,+4.33,+3.65%,3.014M,87.878B,28.24
+13,ANET,"Arista Networks, Inc.",260.65,+5.44,+2.13%,"798,463",81.744B,39.61
+14,CDNS,"Cadence Design Systems, Inc.",276.17,+1.62,+0.59%,"951,777",75.156B,71.92
+15,APH,Amphenol Corporation,120.39,+1.13,+0.95%,1.165M,72.31B,36.82
+16,NXPI,NXP Semiconductors N.V.,253.24,+3.81,+1.53%,1.316M,64.749B,23.40
+17,MSI,"Motorola Solutions, Inc.",335.95,-0.05,-0.01%,"608,342",55.971B,33.76
+18,SNOW,Snowflake Inc.,157.97,+1.83,+1.17%,1.559M,52.792B,N/A
+19,FTNT,"Fortinet, Inc.",64.70,+1.17,+1.84%,4.261M,49.387B,44.32
+20,TEAM,Atlassian Corporation,185.01,+12.24,+7.08%,2.19M,48.158B,N/A
+21,SMCI,"Super Micro Computer, Inc.",737.91,-0.39,-0.05%,5.004M,43.205B,41.16
+22,SQ,"Block, Inc.",69.24,+2.40,+3.58%,9.169M,42.811B,"3,461.75"
+23,DDOG,"Datadog, Inc.",126.08,-0.34,-0.27%,1.731M,42.138B,900.57
+24,MPWR,"Monolithic Power Systems, Inc.",714.69,+62.10,+9.52%,"741,698",34.781B,81.87
+25,IT,"Gartner, Inc.",420.61,-1.78,-0.42%,"333,759",32.652B,41.85
+26,ON,ON Semiconductor Corporation,70.38,+1.37,+1.99%,3.291M,30.28B,14.36
+27,NET,"Cloudflare, Inc.",88.40,+0.36,+0.41%,3.559M,30.036B,N/A
+28,GLW,Corning Incorporated,33.54,+0.06,+0.19%,2.46M,28.596B,46.59
+29,ANSS,"ANSYS, Inc.",313.52,-7.96,-2.48%,"765,589",27.37B,54.81
+30,FTV,Fortive Corporation,76.28,+0.84,+1.11%,"741,081",26.853B,30.27
+31,MDB,"MongoDB, Inc.",364.20,-9.13,-2.45%,"694,083",26.525B,N/A
+32,KEYS,"Keysight Technologies, Inc.",146.57,+1.62,+1.12%,"379,704",25.586B,26.94
+33,BR,"Broadridge Financial Solutions, Inc.",195.63,+2.20,+1.14%,"189,478",23.04B,34.08
+34,CPAY,"Corpay, Inc.",300.02,+3.77,+1.27%,"182,404",21.361B,N/A
+35,NTAP,"NetApp, Inc.",101.84,+0.85,+0.84%,"549,329",21.017B,23.20
+36,IOT,Samsara Inc.,36.74,+1.49,+4.23%,2.228M,20.226B,N/A
+37,TYL,"Tyler Technologies, Inc.",463.43,+4.90,+1.07%,"114,632",19.675B,105.32
+38,LDOS,"Leidos Holdings, Inc.",142.36,+0.17,+0.12%,"536,859",19.249B,60.58
+39,FSLR,"First Solar, Inc.",177.78,+0.20,+0.11%,2.612M,19.029B,22.97
+40,STX,Seagate Technology Holdings plc,86.25,+0.44,+0.51%,"669,653",18.112B,N/A
+41,GDDY,GoDaddy Inc.,123.90,+1.61,+1.32%,1.205M,17.59B,13.66
+42,VRSN,"VeriSign, Inc.",168.96,-2.12,-1.24%,"568,011",16.828B,20.81
+43,ZBRA,Zebra Technologies Corporation,313.78,+4.73,+1.53%,"243,098",16.134B,62.26
+44,BSY,"Bentley Systems, Incorporated",51.80,+0.33,+0.64%,"477,578",15.536B,51.80
+45,AKAM,"Akamai Technologies, Inc.",99.69,-1.20,-1.19%,1.33M,15.274B,28.32
+46,TRMB,Trimble Inc.,59.92,+1.33,+2.27%,"770,190",14.633B,47.94
+47,ENPH,"Enphase Energy, Inc.",105.00,-0.16,-0.15%,2.895M,14.287B,54.40
+48,JBL,Jabil Inc.,115.16,+0.78,+0.68%,"653,882",13.888B,9.98
+49,MANH,"Manhattan Associates, Inc.",209.44,+1.67,+0.80%,"143,896",12.895B,68.67
