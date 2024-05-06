@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import webbrowser
 
-//Write your USER-AGENT header into this dictionary
+#Write your USER-AGENT header into this dictionary
 header = {
     'User-Agent' : 'Your user-agent'
 }
