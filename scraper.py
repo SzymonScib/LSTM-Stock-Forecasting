@@ -52,6 +52,7 @@ def scrape_data(header):
 
     df = pd.DataFrame(data)
     df.to_csv("Technology-Sector-Data.csv")
+    
 def scrape_historical_data(header, symbol):
     url = 'https://finance.yahoo.com/quote/'+ symbol + '/history'
     r = requests.get(url, headers=header)
