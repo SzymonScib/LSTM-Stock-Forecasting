@@ -11,7 +11,7 @@ header = {
 def scrape_data(header):
     url = 'https://finance.yahoo.com/screener/predefined/sec-ind_sec-largest-equities_technology/?offset=0&count=100' #Tu chyba widzisz, że przypisuje adres url do zmiennej
     r = requests.get(url, headers=header) #Tutaj wysyłamy requesta zeby połaczyc sie ze strona z linku url
-    soup = BeautifulSoup(r.text, 'html.parser') #r.text zawiera cały html z tej strony, w drugiej zmiennej wybieramy parser, jest ich kilka ale bieremy html.parser
+    soup = BeautifulSoup(r.text, 'html.parser') #r.text zawiera cały html z tej strony, w drugim parametrze wybieramy parser, jest ich kilka ale bieremy html.parser
     #w zmiennej soup bedzie cały html juz sparsowany tak, że można na nim jakies operacje robic, cos wyszukac itp.
 
     symbols = []
