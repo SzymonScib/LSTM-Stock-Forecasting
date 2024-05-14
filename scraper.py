@@ -72,7 +72,7 @@ def scrape_data(header):
 
 
 def scrape_historical_data(header, symbol, save_dir):
-    url = 'https://finance.yahoo.com/quote/' + symbol + '/history?guccounter=1'
+    url = 'https://finance.yahoo.com/quote/'+ symbol +'/history?period1=1557842128&period2=1715694779'
     cookies = {
         'GUC': 'AQABCAFmQ8tmb0IhUATX&s=AQAAAJuCm0BM&g=ZkJ7Yg',
         'PRF': 't%3DGME',
