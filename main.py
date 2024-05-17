@@ -1,9 +1,7 @@
-from scraper import scrape_historical_data, header
 from scraper import scrape_historical_data, headers
 import os
 import pandas as pd
 
-scrape_historical_data(header, 'AAPL', './data/')
 def filter_data(files):
     for file in files:
         df = pd.read_csv('./data/' + file)
@@ -15,7 +13,7 @@ def sliding_window(file):
     num_records = df.shape[0]
     means = []
 
-    for i in range(int(num_records/5)):
+    for i in range(num_records):
         subset = df['Close'].iloc[i:i+5]
         mean_price = subset.mean()
         means.append(mean_price)
