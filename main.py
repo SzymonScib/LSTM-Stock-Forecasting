@@ -13,7 +13,7 @@ def sliding_window(file):
     num_records = df.shape[0]
     means = []
 
-    for i in range(num_records):
+    for i in range(num_records-5):
         subset = df['Close'].iloc[i:i+5]
         mean_price = subset.mean()
         means.append(mean_price)
