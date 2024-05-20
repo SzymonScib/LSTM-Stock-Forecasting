@@ -1,5 +1,5 @@
-from scraper import scrape_historical_data, headers
 import pandas as pd
+import numpy as np
 
 def filter_data(files):
     for file in files:
@@ -16,7 +16,9 @@ def data_windowing(file, window_size):
         input_sequence.append(close_prices[i:i + window_size])
         output.append(close_prices[i + window_size])
     
-    return input_sequence, output
+    return np.array(input_sequence), np.array(output)
 
 
-a, b  = data_windowing('AMD_historical_data.csv', 5)
+X, Y  = data_windowing('AMD_historical_data.csv', 5)
+
+
