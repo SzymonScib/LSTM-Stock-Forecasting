@@ -1,19 +1,13 @@
 import pandas as pd
 import numpy as np
-from sklearn.preprocessing import MinMaxScaler
-import matplotlib.pyplot as plt
+from sklearn.preprocessing import MinMaxScaler 
+from sklearn import train_test_split
 import torch
 import torch.nn as nn
 from torch.optim import Adam
 import pytorch_lightning as pl
+from torch.utils.data import TensorDataset, DataLoader
 
-
-
-def filter_data(files):
-    for file in files:
-        df = pd.read_csv('./data/' + file)
-        df_reduced = df.iloc[750:]
-        df_reduced.to_csv('./data/' + file, index=False)
 
 def data_windowing(file, window_size):
     df = pd.read_csv('./data/' + file)
@@ -27,68 +21,76 @@ def data_windowing(file, window_size):
     return np.array(input_sequence), np.array(output)
 
 
-X, Y  = data_windowing('AMD_historical_data.csv', 5)
-
 class LSTMModel(pl.LightningModule):
-    def __init__(self):
+    def __init__(self, input_size, hidden_size):
         super().__init__()
         
-        mean = torch.tensor(0.0)
-        std = torch.tensor(1.0)
-
-        #Generating a random value for weights generated from normal distribution and setting initial biases to have a value of 0
-        self.w1 = nn.Parameter(torch.normal(mean=mean, std=std), requires_grad=True)
-        self.w2 = nn.Parameter(torch.normal(mean=mean, std=std), requires_grad=True)
-        self.b1 = nn.Parameter(torch.tensor(0.), requires_grad=True)
-
-        self.w3 = nn.Parameter(torch.normal(mean=mean, std=std), requires_grad=True)
-        self.w4 = nn.Parameter(torch.normal(mean=mean, std=std), requires_grad=True)
-        self.b2 = nn.Parameter(torch.tensor(0.), requires_grad=True)
-
-        self.w5 = nn.Parameter(torch.normal(mean=mean, std=std), requires_grad=True)
-        self.w6 = nn.Parameter(torch.normal(mean=mean, std=std), requires_grad=True)
-        self.b3 = nn.Parameter(torch.tensor(0.), requires_grad=True)
-
-        self.w7 = nn.Parameter(torch.normal(mean=mean, std=std), requires_grad=True)
-        self.w8 = nn.Parameter(torch.normal(mean=mean, std=std), requires_grad=True)
-        self.b4 = nn.Parameter(torch.tensor(0.), requires_grad=True)
-
-    def lstm_unit(self, input_value, long_memory, short_memory):
-
-        #Math of forget gate
-        percent_to_remember = torch.sigmoid((short_memory * self.w1) + (input_value * self.w2) + self.b1)
-        #Math for input gate
-        potential_remember_percent = torch.sigmoid((short_memory * self.w3) + (input_value * self.w4) + self.b2)
-        potential_memory = torch.tanh((short_memory * self.w4) + (input_value * self.w4) + self.b3)
-
-        updated_long_memory = ((long_memory*percent_to_remember)+(potential_remember_percent*potential_memory))
-        #Math for output gate
-        output_percent = torch.sigmoid((short_memory * self.w5) + (input_value * self.w6) + self.b5)
-        updated_short_memory = torch.tahn(updated_long_memory) * output_percent
-
-        return([updated_long_memory, updated_short_memory])
+        self.lstm = nn.LSTM(input_size = input_size, hidden_size= hidden_size, batch_first=True)  
+        self.linear = nn.Linear(hidden_size, 1)     
     
     def forward(self, input):
-        long_memory = 0
-        short_memory = 0
-        day_values = []
+        
+        lstm_out, temp = self.lstm(input)
+        prediction = prediction = self.linear(lstm_out[:, -1, :])
 
-        for item in input:
-            day_values.append(item) 
-
-        for i in range(input):
-            long_memory, short_memory = self.lstm_unit(day_values[i], long_memory, short_memory)
-
-        return short_memory
+        return prediction
 
     def configure_optimizers(self):
         return Adam(self.parameters())
     
-    def trining_steps(self, batch): #To nie wiem czy jest dobrze wsm
+    def training_step(self, batch, batch_idx): 
         input_i, label_i = batch
         output_i = self.forward(input_i[0])
         loss = (output_i - label_i)**2
 
         self.log("train_loss", loss)
+        self.log("out", output_i )
 
         return loss
+    
+    def validation_step(self, batch, batch_idx):
+        input_i, label_i = batch
+        output_i = self(input_i)
+        val_loss = nn.MSELoss()(output_i, label_i)
+        self.log("val_loss", val_loss)
+
+        # Log predictions for tracking
+        for inp, pred, label in zip(input_i, output_i, label_i):
+            self.logger.experiment.add_scalar("validation/predictions", pred.item(), self.current_epoch)
+            self.logger.experiment.add_scalar("validation/labels", label.item(), self.current_epoch)
+
+        return val_loss
+
+    def validation_epoch_end(self, outputs):
+        avg_loss = torch.stack([x for x in outputs]).mean()
+        self.log("avg_val_loss", avg_loss)
+    
+
+X, Y  = data_windowing('AMD_historical_data.csv', 5)
+Y = np.array(Y).reshape(-1, 1)#Reshaping Y to a 2D array so it can be scaled by MinMaxScaler
+
+model = LSTMModel(1, 50)
+
+scalerX = MinMaxScaler()
+X_scaled = scalerX.fit_transform(X)
+scalerY = MinMaxScaler()
+Y_scaled = scalerY.fit_transform(Y)
+
+X_train, X_val, Y_train, Y_val = train_test_split(X_scaled, Y_scaled, test_size=0.2, random_state=42)
+
+X_train_tensor = torch.tensor(X_train, dtype=torch.float32)
+Y_train_tensor = torch.tensor(Y_train, dtype=torch.float32)
+X_val_tensor = torch.tensor(X_val, dtype=torch.float32)
+Y_val_tensor = torch.tensor(Y_val, dtype=torch.float32)
+
+train_dataset = TensorDataset(X_train_tensor, Y_train_tensor)
+val_dataset = TensorDataset(X_val_tensor, Y_val_tensor)
+
+train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
+val_loader = DataLoader(val_dataset, batch_size=32)
+
+trainer = pl.Trainer(max_epochs=3000)
+
+trainer.fit(model, train_dataloaders=train_loader, val_dataloaders=val_loader)
+
+

@@ -96,3 +96,9 @@ def scrape_historical_data(header, symbol, save_dir):
         f.write(requests.get(download_link, headers=headers, cookies=cookies).content)
 
     print('File downloaded to: ', file_name)
+
+def filter_data(files):
+    for file in files:
+        df = pd.read_csv('./data/' + file)
+        df_reduced = df.iloc[750:]
+        df_reduced.to_csv('./data/' + file, index=False)
