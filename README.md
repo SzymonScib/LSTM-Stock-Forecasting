@@ -9,11 +9,11 @@ The predictions are made using historical stock price data scraped from yahoo.fi
 Data Scraping from Yahoo Finance
 
 Libraries used:
-    * requests: For sending HTTP requests and retrieving web content.
-    * BeautifulSoup (bs4): For parsing HTML content.
-    * pandas: For data manipulation and analysis.
-    * os.path: For path manipulation operations.
-    * webbrowser: For opening web pages in a browser.
+      * requests: For sending HTTP requests and retrieving web content.
+      * BeautifulSoup (bs4): For parsing HTML content.
+      * pandas: For data manipulation and analysis.
+      * os.path: For path manipulation operations.
+      * webbrowser: For opening web pages in a browser.
 
 Functions:
    scrape_data(header):
