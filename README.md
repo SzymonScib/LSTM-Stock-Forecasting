@@ -6,7 +6,7 @@ This project is an attempt at using Long-Short-Term-Memory neural network algori
 The predictions are made using historical stock price data scraped from yahoo.finance.com using BeautifulSoup python library 
 
 
-##Data Scraping from Yahoo Finance
+Data Scraping from Yahoo Finance
 
      ###Libraries used:
            * requests: For sending HTTP requests and retrieving web content.
@@ -34,7 +34,7 @@ The predictions are made using historical stock price data scraped from yahoo.fi
          * Adjust parameters such as header, symbol, and save_dir according to your requirements.
          * Run the script.
 
-     ##LSTM Stock Price Prediction Model
+LSTM Stock Price Prediction Model
 
            ###Libraries used:
               * pandas: For data manipulation and analysis.
