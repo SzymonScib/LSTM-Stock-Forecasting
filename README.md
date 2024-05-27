@@ -8,14 +8,14 @@ The predictions are made using historical stock price data scraped from yahoo.fi
 
 Data Scraping from Yahoo Finance
 
-     ###Libraries used:
+     Libraries used:
            * requests: For sending HTTP requests and retrieving web content.
            * BeautifulSoup (bs4): For parsing HTML content.
            * pandas: For data manipulation and analysis.
            * os.path: For path manipulation operations.
            * webbrowser: For opening web pages in a browser.
 
-     ###Functions:
+     Functions:
         scrape_data(header):
              * Input: header (dict) - HTTP request headers.
              * Scrapes current data of technology sector stocks from Yahoo Finance, extracts relevant information from the HTML content, and saves it to a CSV file.
@@ -28,7 +28,7 @@ Data Scraping from Yahoo Finance
              * Input: files (list) - List of file names containing historical data.
              * Description: Reads each CSV file, filters out the first 750 records, and saves the filtered data back to the respective files. This step reduces the dataset size by removing older records.
     
-      ###Usage:
+      Usage:
          * Make sure the necessary libraries are installed (requests, beautifulsoup4, pandas).
          * Ensure the Yahoo Finance URLs are accessible.
          * Adjust parameters such as header, symbol, and save_dir according to your requirements.
@@ -36,7 +36,7 @@ Data Scraping from Yahoo Finance
 
 LSTM Stock Price Prediction Model
 
-           ###Libraries used:
+           Libraries used:
               * pandas: For data manipulation and analysis.
               * numpy: For numerical operations and array manipulation.
               * scikit-learn (sklearn): For data preprocessing tasks such as scaling and train-test split.
@@ -45,7 +45,7 @@ LSTM Stock Price Prediction Model
               * pytorch_lightning: A lightweight PyTorch wrapper for high-performance neural network training.
               * TensorBoardLogger: Logger for PyTorch Lightning that logs metrics for visualization in TensorBoard.
 
-          ###Functions: 
+          Functions: 
                data_windowing(file, window_size):
                   * Input: file (str) - Name of the CSV file containing historical stock data, window_size (int) - Size of the input sequence/window.
                   * Output: Returns input sequences and corresponding output labels for training the LSTM model.
@@ -60,7 +60,7 @@ LSTM Stock Price Prediction Model
                   * Input: predictions (ndarray) - Array of predicted values, actuals (ndarray) - Array of actual values, title (str) - Title for the plot.
                   * Plots the predicted values against the actual values over time. It visualizes the trend and performance of the model's predictions compared to the ground truth. The plot includes a legend to distinguish between actual and predicted values, and axis                     labels for clarity.
 
-     ###Classes:
+     Classes:
           LSTMModel(pl.LigtningModule):
                    Description: Defines the LSTM model architecture inheriting from PyTorch Lightning's LightningModule.
           
@@ -75,7 +75,7 @@ LSTM Stock Price Prediction Model
                       * training_step(self, batch, batch_idx): Defines a single training step.
                       *validation_step(self, batch, batch_idx): Defines a single validation step
 
-     ###Usage:
+     Usage:
          * Ensure the historical stock data is available in a CSV file.
          * Adjust the parameters such as window_size, hidden_size, and max_epochs according to your requirements.
          * Run the script.
